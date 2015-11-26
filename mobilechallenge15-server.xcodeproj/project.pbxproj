@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		02784DE9B386B4C3089D0456 /* libPods-mobilechallenge15-server.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C3DF30FB71B75FF2B60876 /* libPods-mobilechallenge15-server.a */; };
 		E68F3C181C05AFAB00672B89 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68F3C171C05AFAB00672B89 /* AppKit.framework */; };
+		E68F3C1A1C07888400672B89 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E68F3C191C07888400672B89 /* IOKit.framework */; };
+		E68F3C1D1C0789F000672B89 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = E68F3C1C1C0789F000672B89 /* Connection.m */; };
+		E68F3C201C078CC900672B89 /* CodeStringReponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E68F3C1F1C078CC900672B89 /* CodeStringReponse.m */; };
 		E6ABE89D1C05A99600E9EA41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E6ABE89C1C05A99600E9EA41 /* main.m */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,11 @@
 		69C3DF30FB71B75FF2B60876 /* libPods-mobilechallenge15-server.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobilechallenge15-server.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2BB109319E0F8D7F5392FF5 /* Pods-mobilechallenge15-server.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobilechallenge15-server.release.xcconfig"; path = "Pods/Target Support Files/Pods-mobilechallenge15-server/Pods-mobilechallenge15-server.release.xcconfig"; sourceTree = "<group>"; };
 		E68F3C171C05AFAB00672B89 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E68F3C191C07888400672B89 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		E68F3C1B1C0789F000672B89 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
+		E68F3C1C1C0789F000672B89 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
+		E68F3C1E1C078CC900672B89 /* CodeStringReponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeStringReponse.h; sourceTree = "<group>"; };
+		E68F3C1F1C078CC900672B89 /* CodeStringReponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeStringReponse.m; sourceTree = "<group>"; };
 		E6ABE8991C05A99600E9EA41 /* mobilechallenge15-server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "mobilechallenge15-server"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6ABE89C1C05A99600E9EA41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E68F3C1A1C07888400672B89 /* IOKit.framework in Frameworks */,
 				E68F3C181C05AFAB00672B89 /* AppKit.framework in Frameworks */,
 				02784DE9B386B4C3089D0456 /* libPods-mobilechallenge15-server.a in Frameworks */,
 			);
@@ -49,6 +58,7 @@
 		15CCA521D8459F139AEBAB01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E68F3C191C07888400672B89 /* IOKit.framework */,
 				E68F3C171C05AFAB00672B89 /* AppKit.framework */,
 				69C3DF30FB71B75FF2B60876 /* libPods-mobilechallenge15-server.a */,
 			);
@@ -86,6 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				E6ABE89C1C05A99600E9EA41 /* main.m */,
+				E68F3C1B1C0789F000672B89 /* Connection.h */,
+				E68F3C1C1C0789F000672B89 /* Connection.m */,
+				E68F3C1E1C078CC900672B89 /* CodeStringReponse.h */,
+				E68F3C1F1C078CC900672B89 /* CodeStringReponse.m */,
 			);
 			path = "mobilechallenge15-server";
 			sourceTree = "<group>";
@@ -182,6 +196,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6ABE89D1C05A99600E9EA41 /* main.m in Sources */,
+				E68F3C201C078CC900672B89 /* CodeStringReponse.m in Sources */,
+				E68F3C1D1C0789F000672B89 /* Connection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
