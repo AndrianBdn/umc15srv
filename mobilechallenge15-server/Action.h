@@ -15,26 +15,13 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#import "CodeStringReponse.h"
+#import <Foundation/Foundation.h>
 
-@implementation CodeStringReponse {
-    NSInteger status;
-}
+@protocol HTTPResponse;
 
-- (id)initWithString:(NSString *)string code:(NSInteger)code {
-    self = [super initWithData:[string dataUsingEncoding:NSUTF8StringEncoding]];
-    if (self) {
-        status = code;
-    }
-    return self;
-}
+@protocol Action <NSObject>
 
-- (NSDictionary *)httpHeaders {
-    return  @{@"Content-type" : @"text/plain"};
-}
-
-- (NSInteger)status {
-    return status;
-}
++ (NSObject<Action> *)actionWithPath:(NSString *)path;
+- (NSObject<HTTPResponse> *)execute;
 
 @end

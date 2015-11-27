@@ -20,23 +20,21 @@
 #import <HTTPServer.h>
 #import "Connection.h"
 
+void SetupAuthorization(void);
 void CopySerialNumber(CFStringRef *serialNumber);
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         UInt16 serverPort = 9091;
-        
-        CFStringRef serial = NULL;
-        CopySerialNumber(&serial);
-        HTTPBearerToken = (__bridge NSString *)serial;
-        if (!HTTPBearerToken)
-            HTTPBearerToken = [NSString stringWithFormat:@"%d", rand()];
-        // no CFRelease
+
+        SetupAuthorization();
         
         HTTPServer *httpServer = [[HTTPServer alloc] init];
         [httpServer setConnectionClass:[Connection class]];
         [httpServer setPort:serverPort];
         [httpServer setDocumentRoot:NSTemporaryDirectory()];
+        [httpServer setType:@"_mch15._tcp."];
+        
         NSError *error = nil;
         [httpServer start:&error];
         NSCAssert(error == nil, @"error starting HTTP server");
@@ -51,6 +49,24 @@ int main(int argc, const char * argv[]) {
     }
     return 0;
 }
+
+void SetupAuthorization(void) {
+    
+    CFStringRef serial = NULL;
+    CopySerialNumber(&serial);
+    if (serial) {
+        NSString *tmp = (__bridge NSString *)serial;
+        NSInteger index = [tmp length] - 6;
+        index = index < 0 ? 0 : index;
+        HTTPBearerToken = [tmp substringFromIndex:index];
+        CFRelease(serial);
+    }
+    
+    if (!HTTPBearerToken)
+        HTTPBearerToken = [NSString stringWithFormat:@"%d", rand()];
+
+}
+
 
 void CopySerialNumber(CFStringRef *serialNumber)
 {

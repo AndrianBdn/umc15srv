@@ -15,26 +15,9 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#import "CodeStringReponse.h"
 
-@implementation CodeStringReponse {
-    NSInteger status;
-}
+#import <HTTPDataResponse.h>
 
-- (id)initWithString:(NSString *)string code:(NSInteger)code {
-    self = [super initWithData:[string dataUsingEncoding:NSUTF8StringEncoding]];
-    if (self) {
-        status = code;
-    }
-    return self;
-}
-
-- (NSDictionary *)httpHeaders {
-    return  @{@"Content-type" : @"text/plain"};
-}
-
-- (NSInteger)status {
-    return status;
-}
-
+@interface ImageResponse : HTTPDataResponse
+- (id)initWithImage:(NSImage *)image size:(CGSize)size NS_DESIGNATED_INITIALIZER;
 @end

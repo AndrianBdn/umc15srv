@@ -15,26 +15,36 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#import "CodeStringReponse.h"
+#import "AppsAction.h"
+#import "AppsService.h"
+#import "JSONResponse.h"
 
-@implementation CodeStringReponse {
-    NSInteger status;
+@implementation AppsAction
+
++ (AppsAction *)actionWithPath:(NSString *)path {
+    if (![path isEqualToString:@"/apps"])
+        return nil;
+    
+    return [[[self class] alloc] init];
 }
 
-- (id)initWithString:(NSString *)string code:(NSInteger)code {
-    self = [super initWithData:[string dataUsingEncoding:NSUTF8StringEncoding]];
-    if (self) {
-        status = code;
+- (NSObject<HTTPResponse> *)execute {
+    
+    NSMutableArray *responseArray = [NSMutableArray array];
+    
+    for (NSRunningApplication *app in [AppsService appsList]) {
+        [responseArray addObject:
+         @{
+           @"name" : app.localizedName,
+           @"pid" : @(app.processIdentifier),
+           @"alive" : @([app.launchDate timeIntervalSinceNow]),
+           @"active" : @([app isActive])
+           }];
+            
     }
-    return self;
+    
+    return [[JSONResponse alloc] initWithJSONObject:responseArray];
 }
 
-- (NSDictionary *)httpHeaders {
-    return  @{@"Content-type" : @"text/plain"};
-}
-
-- (NSInteger)status {
-    return status;
-}
 
 @end
