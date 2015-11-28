@@ -34,13 +34,13 @@
     if (![scanner scanString:@"/apps/" intoString:nil])
         return nil;
     
-    if (![scanner scanInteger:&(action->pid)])
+    if (![scanner scanInt:&(action->pid)])
         return nil;
 
     if (![scanner scanString:@"/icon/" intoString:nil])
         return nil;
 
-    if (![scanner scanInt:&(action->iconSidePx)])
+    if (![scanner scanInteger:&(action->iconSidePx)])
         return nil;
     
     if (action->iconSidePx > 1024)

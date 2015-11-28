@@ -357,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 426C428B88C3E53391107807 /* Pods-mobilechallenge15-server.debug.xcconfig */;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -365,6 +366,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C2BB109319E0F8D7F5392FF5 /* Pods-mobilechallenge15-server.release.xcconfig */;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
