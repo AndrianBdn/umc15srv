@@ -19,9 +19,11 @@
 #import <Foundation/Foundation.h>
 #import <HTTPServer.h>
 #import "Connection.h"
+#import <AppKit/AppKit.h>
 
 void SetupAuthorization(void);
 void CopySerialNumber(CFStringRef *serialNumber);
+
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -45,7 +47,17 @@ int main(int argc, const char * argv[]) {
             printf("Press Ctrl-C to quit\n");
         }
         
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                          target:[NSNull class]
+                                                        selector:@selector(null)
+                                                        userInfo:nil
+                                                         repeats:YES];
+        
+        (void)timer;
+
         [[NSRunLoop currentRunLoop] run];
+        
+        
     }
     return 0;
 }
