@@ -47,6 +47,8 @@ int main(int argc, const char * argv[]) {
             printf("Press Ctrl-C to quit\n");
         }
         
+        // we need this to keep [[NSWorkspace sharedWorkspace] runningApplications] updating
+        
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                           target:[NSNull class]
                                                         selector:@selector(null)
